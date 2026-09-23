@@ -1,8 +1,13 @@
 import assert from "node:assert/strict";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import test from "node:test";
+import { parseCliArgs } from "../src/args.ts";
 import { hijriFromJdn } from "../src/calendar/hijri.ts";
 import { gregorianToJalali, isJalaliLeapYear, jalaliToGregorian, jalaliToJdn } from "../src/calendar/jalali.ts";
 import { generateYear, justHolidays } from "../src/generate.ts";
+import { writeHolidays } from "../src/write.ts";
 
 const HOLIDAYS_1404 = [
   "1404/01/01",
@@ -145,4 +150,43 @@ test("1407 includes Nowruz, 22 Bahman, and lunar holidays", () => {
   assert.ok(lunar.length >= 16 && lunar.length <= 20);
   const holidayCount = year.data.filter((day) => day.isHoliday).length;
   assert.ok(holidayCount >= 24 && holidayCount <= 32);
+});
+
+test("parseCliArgs reads the year, root, and just-holidays flag", () => {
+  assert.deepEqual(parseCliArgs(["1405"]), { year: 1405, root: "dist", justHolidays: false });
+  assert.deepEqual(parseCliArgs(["--just-holidays", "۱۴۰۵", "--root", "data"]), {
+    year: 1405,
+    root: "data",
+    justHolidays: true,
+  });
+  assert.deepEqual(parseCliArgs(["--root=out/json", "1404"]), {
+    year: 1404,
+    root: "out/json",
+    justHolidays: false,
+  });
+  assert.throws(() => parseCliArgs([]));
+  assert.throws(() => parseCliArgs(["--root"]));
+  assert.throws(() => parseCliArgs(["0"]));
+  assert.throws(() => parseCliArgs(["1404", "1405"]));
+});
+
+test("writeHolidays writes the file into root", async () => {
+  const root = await mkdtemp(path.join(tmpdir(), "iran-holidays-"));
+  try {
+    const written = await writeHolidays({ year: 1404, root, justHolidays: true });
+    assert.equal(written.fileName, "1404-just-holidays.json");
+    assert.equal(path.dirname(written.filePath), path.resolve(root));
+    const parsed = JSON.parse(await readFile(written.filePath, "utf8")) as {
+      data: { shamsiDate: string }[];
+      totalCount: number;
+    };
+    assert.equal(parsed.totalCount, HOLIDAYS_1404.length);
+    assert.equal(Object.hasOwn(parsed.data[0], "isHoliday"), false);
+    assert.deepEqual(
+      parsed.data.map((day) => day.shamsiDate),
+      HOLIDAYS_1404,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });
