@@ -100,6 +100,23 @@ test("years outside 1300-1500 still generate", () => {
   }
 });
 
+test("holidays start only after the event they commemorate", () => {
+  const year10 = generateYear(10);
+  assert.equal(year10.data.some((day) => day.holidayDescription?.includes("نیمه شعبان")), false);
+  assert.equal(year10.data.some((day) => day.holidayDescription?.includes("قائم")), false);
+  assert.equal(year10.data.find((day) => day.date === "10/01/01")?.isHoliday, true);
+
+  const year1340 = generateYear(1340);
+  assert.equal(year1340.data.find((day) => day.date === "1340/11/22")?.isHoliday, false);
+  assert.equal(year1340.data.find((day) => day.date === "1340/03/15")?.isHoliday, false);
+  assert.equal(year1340.data.find((day) => day.date === "1340/01/12")?.isHoliday, false);
+  assert.equal(year1340.data.find((day) => day.date === "1340/01/01")?.isHoliday, true);
+  assert.match(year1340.data.find((day) => day.date === "1340/12/29")?.holidayDescription ?? "", /صنعت نفت/);
+
+  const revolution = generateYear(1357);
+  assert.match(revolution.data.find((day) => day.date === "1357/11/22")?.holidayDescription ?? "", /انقلاب اسلامی/);
+});
+
 test("1407 includes Nowruz, 22 Bahman, and lunar holidays", () => {
   const year = generateYear(1407);
   assert.ok(year.totalCount === 365 || year.totalCount === 366);

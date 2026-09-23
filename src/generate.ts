@@ -18,7 +18,7 @@ export function generateYear(year: number): HolidayYear {
   const data = eachJalaliDay(year).map((shamsi) => {
     const hijri = hijriFromJdn(jalaliToJdn(shamsi.year, shamsi.month, shamsi.day));
     const description = holidayDescription(
-      shamsiHolidayTitles(shamsi.month, shamsi.day),
+      shamsiHolidayTitles(shamsi.year, shamsi.month, shamsi.day),
       hijriHolidayTitles(hijri),
       hijri,
     );

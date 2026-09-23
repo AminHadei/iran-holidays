@@ -15,8 +15,8 @@ Output: `dist/1407.json`
 
 ## The three time.ir calendars
 
-- **Solar Hijri:** fixed holidays such as Nowruz, 12 and 13 Farvardin, 14 and 15 Khordad, 22 Bahman, and 29 Esfand. 30 Esfand is a holiday only in a leap year.
-- **Hijri lunar:** religious holidays such as Tasua, Ashura, Arbaeen, Eid al-Fitr (two days), Eid al-Adha, and Eid al-Ghadir. Their Solar Hijri date moves every year. Imam Reza's martyrdom falls on the last day of Safar, whether that month has 29 or 30 days.
+- **Solar Hijri:** fixed holidays such as Nowruz, 12 and 13 Farvardin, 14 and 15 Khordad, 22 Bahman, and 29 Esfand. 30 Esfand is a holiday only in a leap year. A fixed holiday begins on the date of its event: 22 Bahman starts in 1357, Islamic Republic Day in 1358, the 15 Khordad uprising in 1342, Imam Khomeini's death in 1368, and oil nationalization in 1329. Nowruz and 13 Farvardin have no start date.
+- **Hijri lunar:** religious holidays such as Tasua, Ashura, Arbaeen, Eid al-Fitr (two days), Eid al-Adha, and Eid al-Ghadir. Their Solar Hijri date moves every year. Each one starts on the Hijri date of the event, so mid-Sha'ban begins on 15 Sha'ban 255 AH and does not appear in solar year 10. Imam Reza's martyrdom falls on the last day of Safar, whether that month has 29 or 30 days.
 - **Gregorian:** international occasions such as Christmas and world days. time.ir does not mark them as official holidays, so they are left out. An ordinary Friday is also left unmarked unless it carries a holiday occasion.
 
 Hijri month lengths come from the official Iranian calendar through 18 Farvardin 1406. Later years, including 1407, estimate the evening crescent at Tehran. That estimate is usually right, and it can shift by one day until the calendar center announces the sighting.
