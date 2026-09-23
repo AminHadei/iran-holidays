@@ -1,0 +1,66 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "import", "promise", "node"],
+  "categories": {
+    "correctness": "error",
+    "perf": "error",
+    "suspicious": "error",
+    "restriction": "error",
+    "pedantic": "error"
+  },
+  "env": {
+    "builtin": true
+  },
+  "ignorePatterns": ["dist", "lib", "coverage"],
+  "rules": {
+    "no-console": ["error", { "allow": ["error"] }],
+    "no-unsafe-type-assertion": "off",
+    "no-extraneous-class": "off",
+    "no-relative-parent-imports": "off",
+    "no-invalid-void-type": "off",
+    "class-methods-use-this": "off",
+    "no-empty-function": "off",
+    "no-undefined": "off",
+    "no-alert": "off",
+    "import/unambiguous": "off",
+    "max-classes-per-file": ["error", 2],
+    "max-dependencies": ["error", 15],
+    "no-inline-comments": "off",
+    "typescript/prefer-readonly-parameter-types": "off",
+    "no-unassigned-import": "error"
+  },
+  "overrides": [
+    {
+      "files": ["src/cli.ts"],
+      "rules": {
+        "no-console": "off",
+        "no-process-exit": "off",
+        "no-top-level-await": "off"
+      }
+    },
+    {
+      "files": ["test/**/*.ts", "scripts/**/*.js"],
+      "rules": {
+        "no-console": "off",
+        "no-process-exit": "off",
+        "no-top-level-await": "off",
+        "max-lines": "off",
+        "max-lines-per-function": "off",
+        "no-await-in-loop": "off",
+        "require-await": "off",
+        "strict-boolean-expressions": "off",
+        "no-unsafe-member-access": "off",
+        "no-unsafe-return": "off",
+        "no-unsafe-assignment": "off",
+        "no-unsafe-call": "off",
+        "no-unsafe-argument": "off",
+        "typescript/explicit-function-return-type": "off",
+        "typescript/explicit-module-boundary-types": "off"
+      }
+    }
+  ],
+  "options": {
+    "typeAware": true,
+    "reportUnusedDisableDirectives": "error"
+  }
+}

@@ -2,10 +2,24 @@
   "name": "iran-holidays",
   "version": "1.0.0",
   "description": "Generate official Iranian holiday JSON for any Solar Hijri year",
-  "type": "module",
+  "keywords": [
+    "calendar",
+    "hijri",
+    "holidays",
+    "iran",
+    "jalali",
+    "shamsi"
+  ],
+  "license": "ISC",
+  "author": "",
   "bin": {
     "iran-holidays": "./lib/cli.js"
   },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "exports": {
@@ -14,37 +28,30 @@
       "import": "./lib/index.js"
     }
   },
-  "files": [
-    "lib",
-    "README.md"
-  ],
   "scripts": {
     "build": "tsc && node scripts/rewrite-declaration-extensions.js",
     "prepare": "pnpm run build",
     "create": "node src/cli.ts",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "format": "oxfmt --check .",
+    "format:fix": "oxfmt .",
     "test": "node --test test/*.test.ts",
     "typecheck": "tsc -p tsconfig.typecheck.json --noEmit"
   },
-  "keywords": [
-    "iran",
-    "holidays",
-    "jalali",
-    "hijri",
-    "shamsi",
-    "calendar"
-  ],
-  "engines": {
-    "node": ">=18"
-  },
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.33.4",
   "dependencies": {
     "astronomy-engine": "^2.1.19"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",
+    "oxfmt": "^0.70.0",
+    "oxlint": "^1.85.0",
+    "oxlint-tsgolint": "^7.0.2002",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
-  }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@10.33.4"
 }

@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "useTabs": false,
+  "trailingComma": "all",
+  "semi": true,
+  "quoteProps": "as-needed",
+  "objectWrap": "preserve",
+  "insertFinalNewline": true,
+  "endOfLine": "lf",
+  "embeddedLanguageFormatting": "auto",
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "sortPackageJson": true,
+  "jsxSingleQuote": false,
+  "proseWrap": "preserve",
+  "sortImports": true,
+  "ignorePatterns": ["dist", "lib", "coverage", "pnpm-lock.yaml"]
+}

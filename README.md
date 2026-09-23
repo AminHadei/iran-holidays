@@ -15,6 +15,17 @@ pnpm run create 1405 --root data --just-holidays
 
 `pnpm create` is reserved by pnpm for scaffolding new projects, so this repo uses `pnpm run create`.
 
+## Checks
+
+```bash
+pnpm lint
+pnpm format
+pnpm typecheck
+pnpm test
+```
+
+`pnpm lint` runs Oxlint. `pnpm format` checks Oxfmt, a Prettier-compatible formatter. `pnpm format:fix` and `pnpm lint:fix` write the fixes. GitHub Actions runs these checks on pull requests and on pushes to `main`.
+
 ## Use in another project
 
 ```bash
@@ -22,10 +33,10 @@ pnpm add iran-holidays
 ```
 
 ```ts
-import { generateYear, writeHolidays } from "iran-holidays";
+import { generateYear, writeHolidays } from 'iran-holidays';
 
 await writeHolidays({ year: 1407 });
-await writeHolidays({ year: 1405, root: "data", justHolidays: true });
+await writeHolidays({ year: 1405, root: 'data', justHolidays: true });
 
 const year = generateYear(1404);
 ```
