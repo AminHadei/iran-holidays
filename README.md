@@ -7,9 +7,10 @@ Builds a JSON file of official Iranian holidays for any Solar Hijri year and wri
 ```bash
 pnpm install
 pnpm run create 1407
+pnpm run create 1405 --just-holidays
 ```
 
-Output: `dist/1407.json`
+`dist/1407.json` lists every day and marks holidays with `isHoliday`. `dist/1405-just-holidays.json` lists only holidays and omits `isHoliday`.
 
 `pnpm create` is reserved by pnpm for scaffolding new projects, so this repo uses `pnpm run create`.
 

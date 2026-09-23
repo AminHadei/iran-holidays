@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { hijriFromJdn } from "../src/calendar/hijri.ts";
 import { gregorianToJalali, isJalaliLeapYear, jalaliToGregorian, jalaliToJdn } from "../src/calendar/jalali.ts";
-import { generateYear } from "../src/generate.ts";
+import { generateYear, justHolidays } from "../src/generate.ts";
 
 const HOLIDAYS_1404 = [
   "1404/01/01",
@@ -43,6 +43,22 @@ test("11 Farvardin 1404 is Eid al-Fitr, 1 Shawwal 1446", () => {
     { year: hijri.year, month: hijri.month, day: hijri.day },
     { year: 1446, month: 10, day: 1 },
   );
+});
+
+test("--just-holidays keeps only holiday days and drops isHoliday", () => {
+  const calendar = generateYear(1404);
+  const holidays = justHolidays(calendar);
+
+  assert.deepEqual(
+    holidays.data.map((day) => day.date),
+    HOLIDAYS_1404,
+  );
+  assert.equal(holidays.totalCount, HOLIDAYS_1404.length);
+  for (const day of holidays.data) {
+    assert.equal("isHoliday" in day, false);
+    assert.equal(typeof day.holidayDescription, "string");
+    assert.equal(day.shamsiDate, day.date);
+  }
 });
 
 test("1404 holidays match the official calendar and skip international occasions", () => {

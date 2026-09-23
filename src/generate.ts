@@ -14,6 +14,26 @@ export type HolidayYear = {
   totalCount: number;
 };
 
+export type JustHolidayDay = {
+  date: string;
+  shamsiDate: string;
+  holidayDescription: string;
+};
+
+export type JustHolidayYear = {
+  data: JustHolidayDay[];
+  totalCount: number;
+};
+
+export function justHolidays(calendar: HolidayYear): JustHolidayYear {
+  const data = calendar.data.flatMap((day) =>
+    day.isHoliday && day.holidayDescription
+      ? [{ date: day.date, shamsiDate: day.shamsiDate, holidayDescription: day.holidayDescription }]
+      : [],
+  );
+  return { data, totalCount: data.length };
+}
+
 export function generateYear(year: number): HolidayYear {
   const data = eachJalaliDay(year).map((shamsi) => {
     const hijri = hijriFromJdn(jalaliToJdn(shamsi.year, shamsi.month, shamsi.day));
