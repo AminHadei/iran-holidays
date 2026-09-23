@@ -1,4 +1,4 @@
-import type { HijriDate } from "./calendar/hijri.ts";
+import type { HijriDate } from './calendar/hijri.ts';
 
 /**
  * time.ir groups occasions on three calendars:
@@ -26,18 +26,23 @@ export type ShamsiHoliday = {
 };
 
 export const SHAMSI_HOLIDAYS: readonly ShamsiHoliday[] = [
-  { month: 1, day: 1, title: "جشن نوروز/جشن سال نو" },
-  { month: 1, day: 2, title: "عید نوروز" },
-  { month: 1, day: 3, title: "عید نوروز" },
-  { month: 1, day: 4, title: "عید نوروز" },
-  { month: 1, day: 12, title: "روز جمهوری اسلامی", since: { year: 1358, month: 1, day: 12 } },
-  { month: 1, day: 13, title: "جشن سیزده به در" },
-  { month: 1, day: 13, title: "روز طبیعت" },
-  { month: 3, day: 14, title: "رحلت حضرت امام خمینی", since: { year: 1368, month: 3, day: 14 } },
-  { month: 3, day: 15, title: "قیام 15 خرداد", since: { year: 1342, month: 3, day: 15 } },
-  { month: 11, day: 22, title: "پیروزی انقلاب اسلامی", since: { year: 1357, month: 11, day: 22 } },
-  { month: 12, day: 29, title: "روز ملی شدن صنعت نفت ایران", since: { year: 1329, month: 12, day: 29 } },
-  { month: 12, day: 30, title: "آخرین روز سال" },
+  { month: 1, day: 1, title: 'جشن نوروز/جشن سال نو' },
+  { month: 1, day: 2, title: 'عید نوروز' },
+  { month: 1, day: 3, title: 'عید نوروز' },
+  { month: 1, day: 4, title: 'عید نوروز' },
+  { month: 1, day: 12, title: 'روز جمهوری اسلامی', since: { year: 1358, month: 1, day: 12 } },
+  { month: 1, day: 13, title: 'جشن سیزده به در' },
+  { month: 1, day: 13, title: 'روز طبیعت' },
+  { month: 3, day: 14, title: 'رحلت حضرت امام خمینی', since: { year: 1368, month: 3, day: 14 } },
+  { month: 3, day: 15, title: 'قیام 15 خرداد', since: { year: 1342, month: 3, day: 15 } },
+  { month: 11, day: 22, title: 'پیروزی انقلاب اسلامی', since: { year: 1357, month: 11, day: 22 } },
+  {
+    month: 12,
+    day: 29,
+    title: 'روز ملی شدن صنعت نفت ایران',
+    since: { year: 1329, month: 12, day: 29 },
+  },
+  { month: 12, day: 30, title: 'آخرین روز سال' },
 ];
 
 export type HijriHoliday = {
@@ -51,62 +56,92 @@ export type HijriHoliday = {
 };
 
 export const HIJRI_HOLIDAYS: readonly HijriHoliday[] = [
-  { month: 1, day: 9, title: "تاسوعای حسینی", since: { year: 61, month: 1, day: 9 } },
-  { month: 1, day: 10, title: "عاشورای حسینی", since: { year: 61, month: 1, day: 10 } },
-  { month: 2, day: 20, title: "اربعین حسینی", since: { year: 61, month: 2, day: 20 } },
-  { month: 2, day: 28, title: "رحلت رسول اکرم", since: { year: 11, month: 2, day: 28 } },
-  { month: 2, day: 28, title: "شهادت امام حسن مجتبی علیه السلام", since: { year: 50, month: 2, day: 28 } },
+  { month: 1, day: 9, title: 'تاسوعای حسینی', since: { year: 61, month: 1, day: 9 } },
+  { month: 1, day: 10, title: 'عاشورای حسینی', since: { year: 61, month: 1, day: 10 } },
+  { month: 2, day: 20, title: 'اربعین حسینی', since: { year: 61, month: 2, day: 20 } },
+  { month: 2, day: 28, title: 'رحلت رسول اکرم', since: { year: 11, month: 2, day: 28 } },
+  {
+    month: 2,
+    day: 28,
+    title: 'شهادت امام حسن مجتبی علیه السلام',
+    since: { year: 50, month: 2, day: 28 },
+  },
   {
     month: 2,
     day: 30,
-    title: "شهادت امام رضا علیه السلام",
+    title: 'شهادت امام رضا علیه السلام',
     onLastDayIfShorter: true,
     since: { year: 203, month: 2, day: 29 },
   },
   {
     month: 3,
     day: 8,
-    title: "شهادت امام حسن عسکری علیه السلام و آغاز امامت حضرت ولیعصر (عج)",
+    title: 'شهادت امام حسن عسکری علیه السلام و آغاز امامت حضرت ولیعصر (عج)',
     since: { year: 260, month: 3, day: 8 },
   },
-  { month: 3, day: 17, title: "میلاد رسول اکرم", since: { year: -52, month: 3, day: 17 } },
-  { month: 3, day: 17, title: "ولادت امام جعفر صادق علیه السلام", since: { year: 83, month: 3, day: 17 } },
-  { month: 6, day: 3, title: "شهادت حضرت فاطمه زهرا سلام الله علیها", since: { year: 11, month: 6, day: 3 } },
-  { month: 7, day: 13, title: "ولادت امام علی علیه السلام و روز پدر", since: { year: -22, month: 7, day: 13 } },
-  { month: 7, day: 27, title: "مبعث رسول اکرم (ص)", since: { year: -12, month: 7, day: 27 } },
+  { month: 3, day: 17, title: 'میلاد رسول اکرم', since: { year: -52, month: 3, day: 17 } },
+  {
+    month: 3,
+    day: 17,
+    title: 'ولادت امام جعفر صادق علیه السلام',
+    since: { year: 83, month: 3, day: 17 },
+  },
+  {
+    month: 6,
+    day: 3,
+    title: 'شهادت حضرت فاطمه زهرا سلام الله علیها',
+    since: { year: 11, month: 6, day: 3 },
+  },
+  {
+    month: 7,
+    day: 13,
+    title: 'ولادت امام علی علیه السلام و روز پدر',
+    since: { year: -22, month: 7, day: 13 },
+  },
+  { month: 7, day: 27, title: 'مبعث رسول اکرم (ص)', since: { year: -12, month: 7, day: 27 } },
   {
     month: 8,
     day: 15,
-    title: "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان",
+    title: 'ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان',
     since: { year: 255, month: 8, day: 15 },
   },
-  { month: 9, day: 21, title: "شهادت حضرت علی علیه السلام", since: { year: 40, month: 9, day: 21 } },
-  { month: 10, day: 1, title: "عید سعید فطر", since: { year: 2, month: 10, day: 1 } },
-  { month: 10, day: 2, title: "تعطیل به مناسبت عید سعید فطر", since: { year: 2, month: 10, day: 2 } },
-  { month: 10, day: 25, title: "شهادت امام جعفر صادق علیه السلام", since: { year: 148, month: 10, day: 25 } },
-  { month: 12, day: 10, title: "عید سعید قربان", since: { year: 2, month: 12, day: 10 } },
-  { month: 12, day: 18, title: "عید سعید غدیر خم", since: { year: 10, month: 12, day: 18 } },
+  { month: 9, day: 21, title: 'شهادت حضرت علی علیه السلام', since: { year: 40, month: 9, day: 21 } },
+  { month: 10, day: 1, title: 'عید سعید فطر', since: { year: 2, month: 10, day: 1 } },
+  {
+    month: 10,
+    day: 2,
+    title: 'تعطیل به مناسبت عید سعید فطر',
+    since: { year: 2, month: 10, day: 2 },
+  },
+  {
+    month: 10,
+    day: 25,
+    title: 'شهادت امام جعفر صادق علیه السلام',
+    since: { year: 148, month: 10, day: 25 },
+  },
+  { month: 12, day: 10, title: 'عید سعید قربان', since: { year: 2, month: 12, day: 10 } },
+  { month: 12, day: 18, title: 'عید سعید غدیر خم', since: { year: 10, month: 12, day: 18 } },
 ];
 
 export const HIJRI_MONTH_NAMES = [
-  "محرم",
-  "صفر",
-  "ربیع‌الاول",
-  "ربیع‌الثانی",
-  "جمادی‌الاول",
-  "جمادی‌الثانی",
-  "رجب",
-  "شعبان",
-  "رمضان",
-  "شوال",
-  "ذی‌القعده",
-  "ذی‌الحجه",
+  'محرم',
+  'صفر',
+  'ربیع‌الاول',
+  'ربیع‌الثانی',
+  'جمادی‌الاول',
+  'جمادی‌الثانی',
+  'رجب',
+  'شعبان',
+  'رمضان',
+  'شوال',
+  'ذی‌القعده',
+  'ذی‌الحجه',
 ] as const;
 
-const PERSIAN_DIGITS = "۰۱۲۳۴۵۶۷۸۹";
+const PERSIAN_DIGITS = '۰۱۲۳۴۵۶۷۸۹';
 
 function toPersianDigits(value: number): string {
-  return String(value).replace(/\d/g, (digit) => PERSIAN_DIGITS[Number(digit)] ?? digit);
+  return String(value).replaceAll(/\d/gu, (digit) => PERSIAN_DIGITS[Number(digit)] ?? digit);
 }
 
 function isOnOrAfter(date: CalendarDate, since: CalendarDate | undefined): boolean {
@@ -118,7 +153,10 @@ function isOnOrAfter(date: CalendarDate, since: CalendarDate | undefined): boole
 
 export function shamsiHolidayTitles(year: number, month: number, day: number): string[] {
   return SHAMSI_HOLIDAYS.filter(
-    (holiday) => holiday.month === month && holiday.day === day && isOnOrAfter({ year, month, day }, holiday.since),
+    (holiday) =>
+      holiday.month === month &&
+      holiday.day === day &&
+      isOnOrAfter({ year, month, day }, holiday.since),
   ).map((holiday) => holiday.title);
 }
 
@@ -134,12 +172,16 @@ export function hijriHolidayTitles(date: HijriDate): string[] {
   }).map((holiday) => holiday.title);
 }
 
-export function holidayDescription(shamsiTitles: string[], hijriTitles: string[], hijri: HijriDate): string | null {
+export function holidayDescription(
+  shamsiTitles: string[],
+  hijriTitles: string[],
+  hijri: HijriDate,
+): string | null {
   const parts: string[] = [];
-  if (shamsiTitles.length > 0) parts.push(shamsiTitles.join(" و "));
+  if (shamsiTitles.length > 0) parts.push(shamsiTitles.join(' و '));
   if (hijriTitles.length > 0) {
     const bracket = `[${toPersianDigits(hijri.day)} ${HIJRI_MONTH_NAMES[hijri.month - 1]}]`;
-    parts.push(`${hijriTitles.join(" و ")} ${bracket}`);
+    parts.push(`${hijriTitles.join(' و ')} ${bracket}`);
   }
-  return parts.length > 0 ? parts.join(" - ") : null;
+  return parts.length > 0 ? parts.join(' - ') : null;
 }

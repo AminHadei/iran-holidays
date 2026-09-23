@@ -1,8 +1,7 @@
-import { readdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { readdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
 
-const lib = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "lib");
+const lib = path.join(import.meta.dirname, '..', 'lib');
 
 async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -12,9 +11,9 @@ async function walk(directory) {
       await walk(fullPath);
       continue;
     }
-    if (!entry.name.endsWith(".d.ts")) continue;
-    const source = await readFile(fullPath, "utf8");
-    const rewritten = source.replaceAll(".ts\"", ".js\"").replaceAll(".ts'", ".js'");
+    if (!entry.name.endsWith('.d.ts')) continue;
+    const source = await readFile(fullPath, 'utf8');
+    const rewritten = source.replaceAll('.ts"', '.js"').replaceAll(".ts'", ".js'");
     if (rewritten !== source) await writeFile(fullPath, rewritten);
   }
 }

@@ -1,6 +1,6 @@
-import { hijriFromJdn } from "./calendar/hijri.ts";
-import { eachJalaliDay, formatJalali, jalaliToJdn } from "./calendar/jalali.ts";
-import { hijriHolidayTitles, holidayDescription, shamsiHolidayTitles } from "./rules.ts";
+import { hijriFromJdn } from './calendar/hijri.ts';
+import { eachJalaliDay, formatJalali, jalaliToJdn } from './calendar/jalali.ts';
+import { hijriHolidayTitles, holidayDescription, shamsiHolidayTitles } from './rules.ts';
 
 export type HolidayDay = {
   date: string;
@@ -27,7 +27,7 @@ export type JustHolidayYear = {
 
 export function justHolidays(calendar: HolidayYear): JustHolidayYear {
   const data = calendar.data.flatMap((day) =>
-    day.isHoliday && day.holidayDescription
+    day.isHoliday && day.holidayDescription !== null && day.holidayDescription !== ''
       ? [{ date: day.date, shamsiDate: day.shamsiDate, holidayDescription: day.holidayDescription }]
       : [],
   );

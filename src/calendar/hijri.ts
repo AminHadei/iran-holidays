@@ -1,6 +1,6 @@
-import { jdnToGregorian } from "./jalali.ts";
-import { OFFICIAL_HIJRI_MONTHS, OFFICIAL_HIJRI_START_JDN } from "./official-months.ts";
-import { crescentVisible } from "./sighting.ts";
+import { jdnToGregorian } from './jalali.ts';
+import { OFFICIAL_HIJRI_MONTHS, OFFICIAL_HIJRI_START_JDN } from './official-months.ts';
+import { crescentVisible } from './sighting.ts';
 
 export type HijriDate = {
   year: number;
@@ -39,9 +39,15 @@ function predictLength(startJdn: number): number {
   return crescentVisible(jdnToGregorian(startJdn + 28)) ? 29 : 30;
 }
 
+function lastMonth(list: HijriMonth[]): HijriMonth {
+  const month = list.at(-1);
+  if (!month) throw new Error('Hijri month list is empty.');
+  return month;
+}
+
 function extendForward(list: HijriMonth[], jdn: number): void {
-  while (jdn >= list[list.length - 1].startJdn + list[list.length - 1].length) {
-    const previous = list[list.length - 1];
+  while (jdn >= lastMonth(list).startJdn + lastMonth(list).length) {
+    const previous = lastMonth(list);
     const startJdn = previous.startJdn + previous.length;
     list.push({
       year: previous.month === 12 ? previous.year + 1 : previous.year,
@@ -73,7 +79,7 @@ export function hijriFromJdn(jdn: number): HijriDate {
   let low = 0;
   let high = list.length - 1;
   while (low <= high) {
-    const mid = (low + high) >> 1;
+    const mid = Math.trunc((low + high) / 2);
     const month = list[mid];
     if (jdn < month.startJdn) {
       high = mid - 1;

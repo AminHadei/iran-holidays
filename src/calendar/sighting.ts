@@ -1,12 +1,6 @@
-import {
-  Body,
-  Elongation,
-  Equator,
-  Horizon,
-  Observer,
-  SearchRiseSet,
-} from "astronomy-engine";
-import type { Ymd } from "./jalali.ts";
+import { Body, Elongation, Equator, Horizon, Observer, SearchRiseSet } from 'astronomy-engine';
+
+import type { Ymd } from './jalali.ts';
 
 /** Tehran. Sunset here is the crescent criterion once the official table runs out. */
 const TEHRAN = new Observer(35.6892, 51.389, 1200);
