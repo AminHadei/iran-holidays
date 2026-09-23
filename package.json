@@ -1,0 +1,23 @@
+{
+  "name": "iran-holidays",
+  "version": "1.0.0",
+  "description": "Generate official Iranian holiday JSON for any Solar Hijri year",
+  "type": "module",
+  "scripts": {
+    "create": "node src/cli.ts",
+    "test": "node --test test/generate.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.4",
+  "dependencies": {
+    "astronomy-engine": "^2.1.19"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
