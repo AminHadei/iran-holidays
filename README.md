@@ -8,11 +8,36 @@ Builds a JSON file of official Iranian holidays for any Solar Hijri year and wri
 pnpm install
 pnpm run create 1407
 pnpm run create 1405 --just-holidays
+pnpm run create 1405 --root data --just-holidays
 ```
 
-`dist/1407.json` lists every day and marks holidays with `isHoliday`. `dist/1405-just-holidays.json` lists only holidays and omits `isHoliday`.
+`dist/1407.json` lists every day and marks holidays with `isHoliday`. `dist/1405-just-holidays.json` lists only holidays and omits `isHoliday`. `--root` chooses the output directory and defaults to `dist`.
 
 `pnpm create` is reserved by pnpm for scaffolding new projects, so this repo uses `pnpm run create`.
+
+## Use in another project
+
+```bash
+pnpm add iran-holidays
+```
+
+```ts
+import { generateYear, writeHolidays } from "iran-holidays";
+
+await writeHolidays({ year: 1407 });
+await writeHolidays({ year: 1405, root: "data", justHolidays: true });
+
+const year = generateYear(1404);
+```
+
+`writeHolidays` writes `{year}.json`, or `{year}-just-holidays.json` when `justHolidays` is set. `root` defaults to `dist`, resolved from the current working directory.
+
+The package also installs a `iran-holidays` command:
+
+```bash
+iran-holidays 1407 --root data
+iran-holidays 1405 --just-holidays --root data
+```
 
 ## The three time.ir calendars
 

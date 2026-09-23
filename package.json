@@ -3,12 +3,39 @@
   "version": "1.0.0",
   "description": "Generate official Iranian holiday JSON for any Solar Hijri year",
   "type": "module",
-  "scripts": {
-    "create": "node src/cli.ts",
-    "test": "node --test test/generate.test.ts",
-    "typecheck": "tsc --noEmit"
+  "bin": {
+    "iran-holidays": "./lib/cli.js"
   },
-  "keywords": [],
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    }
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/rewrite-declaration-extensions.js",
+    "prepare": "pnpm run build",
+    "create": "node src/cli.ts",
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit"
+  },
+  "keywords": [
+    "iran",
+    "holidays",
+    "jalali",
+    "hijri",
+    "shamsi",
+    "calendar"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.4",
