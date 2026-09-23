@@ -91,6 +91,15 @@ test("30 Esfand exists only in a leap year and is a holiday", () => {
   assert.equal(generateYear(1404).data.some((day) => day.date === "1404/12/30"), false);
 });
 
+test("years outside 1300-1500 still generate", () => {
+  for (const year of [234, 1508]) {
+    const calendar = generateYear(year);
+    assert.ok(calendar.totalCount === 365 || calendar.totalCount === 366);
+    assert.equal(calendar.data[0]?.isHoliday, true);
+    assert.ok(calendar.data.some((day) => day.holidayDescription?.includes("[")));
+  }
+});
+
 test("1407 includes Nowruz, 22 Bahman, and lunar holidays", () => {
   const year = generateYear(1407);
   assert.ok(year.totalCount === 365 || year.totalCount === 366);

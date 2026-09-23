@@ -21,7 +21,7 @@ function usage(): never {
 }
 
 const year = normalizeYear(process.argv[2] ?? "");
-if (!Number.isInteger(year) || year < 1300 || year > 1500) usage();
+if (!Number.isInteger(year) || year < 1) usage();
 
 const calendar = generateYear(year);
 const holidayCount = calendar.data.filter((day) => day.isHoliday).length;
